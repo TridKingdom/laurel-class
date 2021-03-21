@@ -7,18 +7,20 @@
 
   tkDataStore.moduelSource = {
     local: {
-      basic: 'data/basic.csv',
-      advanced: 'data/advanced.csv',
-      aisa: 'data/aisa.csv',
+      low: 'data/basic.csv',
+      medium: 'data/advanced.csv',
+      high: 'data/advanced.csv',
+      asia: 'data/asia.csv',
       europe: 'data/europe.csv',
       africa: 'data/africa.csv',
       southAmerica: 'data/south-america.csv',
       northAmerica: 'data/north-america.csv',
     },
     cloud: {
-      basic: '19gKrd4RpiU7evbYe-Bb8XJ18B7yzaD_ZqHlOFEMFu04',
-      advanced: '1HnqeQtNhuqWvEJau5VINIn4DhivCSvLD5C3w4dLz5TA',
-      aisa: 'xxx',
+      low: '1bB8N-VHQ1KgHkUistEIc_ojwQs0kUG4oyAEEOZh3u_M',
+      medium: '1nCuFgFRfcf1QVsKB4vuHBu4b5AixnaeDyP3PgKoPlQg',
+      high: '1GjJsq1jQz2lwoxFJkSB-JB0MC_n3_5GRFGOvlJcqwcY',
+      asia: 'xxx',
       europe: 'xxx',
       africa: 'xxx',
       southAmerica: 'xxx',
@@ -29,7 +31,7 @@
   tkDataStore.questionModules = {
     basic: {},
     advanced: {},
-    aisa: {},
+    asia: {},
     europe: {},
     africa: {},
     southAmerica: {},
