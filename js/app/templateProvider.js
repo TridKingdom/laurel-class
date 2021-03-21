@@ -6,7 +6,10 @@
 
     tkDataStore.templateSources = {
       moduleBasic: {id: 'moduleBasic', path: 'templates/module-basic.hbs', template: '', partial: false},
-      moduleAdvanced: {id: 'moduleAdvanced', path: 'templates/module-advanced.hbs', template: '', partial: false},
+      moduleAdvanced: {id: 'moduleAdvanced', path: 'templates/module-basic.hbs', template: '', partial: false},
+      moduleLow: { id: 'moduleLow', path: 'templates/module-basic.hbs', template: '', partial: false},
+      moduleMedium: { id: 'moduleMedium', path: 'templates/module-basic.hbs', template: '', partial: false},
+      moduleHigh: { id: 'moduleHigh', path: 'templates/module-basic.hbs', template: '', partial: false},
 
       slideReady: {id: 'slideReady', path: 'templates/slide-ready.hbs', template: '', partial: true},
       slideScoreList: {id: 'slideScoreList', path: 'templates/slide-score-list.hbs', template: '', partial: true},

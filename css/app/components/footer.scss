@@ -11,7 +11,7 @@
     text-align: left;
 
     .tk-icon-link__img {
-      max-width: 80px;
+      max-height: 60px;
     }
 
     &:hover {
@@ -22,7 +22,7 @@
     }
 
     &.tk-icon-link--slides-index {}
-    &.tk-icon-link--advanced-menu { display: none; }
+
   }
 }
 
