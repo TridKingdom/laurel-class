@@ -5,20 +5,12 @@
   }
 
   .tk-index-box {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-content: space-around;
-    margin-left: 0;
     list-style: none;
+    padding-left: 0;
+    text-align: center;
 
     .tk-index-box__option {
-      flex: 1 1 20vw;
-      margin: .4em 0;
-
-      > a {
-
-      }
+      line-height: 2;
     }
   }
 
