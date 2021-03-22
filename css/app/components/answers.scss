@@ -9,6 +9,11 @@
     font-size: 1.2em;
     cursor: pointer;
 
+    .tk-answers__no {
+      display: inline-block;
+      margin-right: 0.2em;
+    }
+
     &.is-selected {
       &.is-true { background-color: $tk-success; }
       &.is-false { background-color: $tk-danger; }
