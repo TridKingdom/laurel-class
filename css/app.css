@@ -47,7 +47,7 @@
   width: 10%;
 }
 .tk-millionarie-class .tk-logo.tk-logo--lg {
-  width: 100%;
+  width: 50%;
 }
 
 .tk-millionarie-class .tk-title {
@@ -129,10 +129,25 @@
 .tk-millionarie-class .tk-slides-footer .tk-icon-link .tk-icon-link__img {
   max-height: 60px;
 }
+.tk-millionarie-class .tk-slides-footer .tk-icon-link .tk-icon-link__text {
+  display: none;
+  color: #e35d4f;
+  font-size: 0.8em;
+}
 .tk-millionarie-class .tk-slides-footer .tk-icon-link:hover .tk-icon-link__img {
   background-color: transparent;
   box-shadow: 0 0 transparent;
 }
+.tk-millionarie-class .tk-slides-footer .tk-icon-link:hover .tk-icon-link__text {
+  color: #ee9a91;
+}
+.tk-millionarie-class .tk-slides-footer.is-last-page .tk-icon-link .tk-icon-link__img {
+  display: none;
+}
+.tk-millionarie-class .tk-slides-footer.is-last-page .tk-icon-link .tk-icon-link__text {
+  display: block;
+}
+
 .tk-millionarie-class.module-advanced .tk-slides-footer .tk-icon-link.tk-icon-link--advanced-menu {
   display: block;
 }
@@ -162,6 +177,7 @@
    ========================================================================== */
 #slide-starting h1 {
   font-weight: bold;
+  color: #e35d4f;
 }
 
 #slide-index .tk-slide-title {

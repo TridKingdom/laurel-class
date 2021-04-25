@@ -153,7 +153,7 @@
 
   });
 })(window.jQuery, window._, window.Handlebars);
-;(function($, _, Handlebars, Papa, Tabletop, tkDataStore) {
+;(function($, _, Handlebars, Reveal, Papa, Tabletop, tkDataStore) {
   'use strict';
 
   $(function() {
@@ -166,6 +166,7 @@
       _registerLoadQuestionModuleHandler();
       _registerChooseAnswerHandler();
       _registerMakeDecisionHandler();
+      _registerLastPageHandler();
     }
 
     function _registerLoadQuestionModuleHandler() {
@@ -211,6 +212,19 @@
 
         // Make score-list-item disabled
         $questionItem.addClass('disabled');
+      });
+    }
+
+    function _registerLastPageHandler() {
+      Reveal.addEventListener('slidechanged', function (event) {
+        var id = event.currentSlide.id;
+        var $footer = $('.tk-millionarie-class .tk-slides-footer');
+
+        if (id === 'slide-ending') {
+          $footer.addClass('is-last-page');
+        } else {
+          $footer.removeClass('is-last-page');
+        }
       });
     }
 
@@ -323,7 +337,7 @@
       // Register new module class name to <body>
       $('.tk-millionarie-class')
         .removeClass()
-        .addClass('tk-millionarie-class ' + moduleClassName);
+        .addClass('tk-millionarie-class module-loaded ' + moduleClassName);
     }
 
     function _compileTemplate(templateName, model) {
@@ -376,4 +390,4 @@
 
     activate();
   });
-})(window.jQuery, window._, window.Handlebars, window.Papa, window.Tabletop, window.tkDataStore);
+})(window.jQuery, window._, window.Handlebars, window.Reveal, window.Papa, window.Tabletop, window.tkDataStore);
