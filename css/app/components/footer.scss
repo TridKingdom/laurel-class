@@ -14,15 +14,37 @@
       max-height: 60px;
     }
 
+    .tk-icon-link__text {
+      display: none;
+      color: $tk-secondary;
+      font-size: 0.8em;
+    }
+
     &:hover {
       .tk-icon-link__img {
         background-color: transparent;
         box-shadow: 0 0 transparent;
       }
+
+      .tk-icon-link__text {
+        color: lighten($tk-secondary, 15%);
+      }
     }
 
     &.tk-icon-link--slides-index {}
 
+  }
+
+  &.is-last-page {
+    .tk-icon-link {
+      .tk-icon-link__img {
+        display: none;
+      }
+
+      .tk-icon-link__text {
+        display: block;
+      }
+    }
   }
 }
 
