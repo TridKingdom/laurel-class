@@ -17,9 +17,9 @@
       northAmerica: 'data/north-america.csv',
     },
     cloud: {
-      low: '1bB8N-VHQ1KgHkUistEIc_ojwQs0kUG4oyAEEOZh3u_M',
-      medium: '1nCuFgFRfcf1QVsKB4vuHBu4b5AixnaeDyP3PgKoPlQg',
-      high: '1GjJsq1jQz2lwoxFJkSB-JB0MC_n3_5GRFGOvlJcqwcY',
+      low: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT6Ys9Vw3rraPDmCeWave1xpovF1YBayV0FbRPBg-iuh2DBkjj84P7D31OthaHTG3uLWkXblccZ5qhA/pub?output=csv',
+      medium: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vREStPvytLV1CMGf0aeMzozI3mpVnU5tSPV8phELKq4VdKD7jMdsWmsR8n203rq-FMIPxdgUA-VCUSv/pub?output=csv',
+      high: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLXta4ldz5NnndUF5p92SxcnOSvM5SO9Nk3_TQq2ZHEDkCSnARB1UUppJ3tiucJ0gjfW2tMGzhxbct/pub?output=csv',
       asia: 'xxx',
       europe: 'xxx',
       africa: 'xxx',
@@ -153,7 +153,7 @@
 
   });
 })(window.jQuery, window._, window.Handlebars);
-;(function($, _, Handlebars, Reveal, Papa, Tabletop, tkDataStore) {
+;(function($, _, Handlebars, Reveal, Papa, tkDataStore) {
   'use strict';
 
   $(function() {
@@ -241,12 +241,14 @@
           window.location.href = window.location.origin + window.location.pathname + '#/slide-ready';
           _soundEffect('laser', 'stop');
         })
-        .fail(function() {
-          _shouldStartLoading(false);
-          window.location.href = window.location.origin + window.location.pathname + '#slide-index';
+        .fail(function () {
           console.warn('Fail loading question module <' + moduleName + '> , please try another one');
-          _buildModule(moduleName, 'local');
-          _soundEffect('laser', 'stop');
+          return _buildModule(moduleName, 'local')
+            .then(function () {
+              _shouldStartLoading(false);
+              window.location.href = window.location.origin + window.location.pathname + '#slide-ready';
+              _soundEffect('laser', 'stop');
+            });
         });
     }
 
@@ -305,20 +307,18 @@
         deferred.reject('loading timeout');
       }, 5000);
 
-      Tabletop.init({
-        key: tkDataStore.moduelSource.cloud[moduleName],
-        callback: function(data, tabletop) {
-          tkDataStore.questionModules[moduleName] = data;
+      Papa.parse(tkDataStore.moduelSource.cloud[moduleName], {
+        download: true,
+        header: true,
+        complete: function(data) {
+          tkDataStore.questionModules[moduleName] = data.data;
           clearTimeout(timer);
           deferred.resolve({
             name: moduleName,
             questions: tkDataStore.questionModules[moduleName]
           });
-        },
-        simpleSheet: true,
-        parseNumbers: true
+        }
       });
-
 
       return deferred.promise();
     }
@@ -390,4 +390,4 @@
 
     activate();
   });
-})(window.jQuery, window._, window.Handlebars, window.Reveal, window.Papa, window.Tabletop, window.tkDataStore);
+})(window.jQuery, window._, window.Handlebars, window.Reveal, window.Papa, window.tkDataStore);
