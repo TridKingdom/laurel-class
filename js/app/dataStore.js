@@ -7,9 +7,9 @@
 
   tkDataStore.moduelSource = {
     local: {
-      low: 'data/basic.csv',
-      medium: 'data/advanced.csv',
-      high: 'data/advanced.csv',
+      low: 'data/low.csv',
+      medium: 'data/medium.csv',
+      high: 'data/high.csv',
       asia: 'data/asia.csv',
       europe: 'data/europe.csv',
       africa: 'data/africa.csv',
@@ -17,9 +17,9 @@
       northAmerica: 'data/north-america.csv',
     },
     cloud: {
-      low: '1bB8N-VHQ1KgHkUistEIc_ojwQs0kUG4oyAEEOZh3u_M',
-      medium: '1nCuFgFRfcf1QVsKB4vuHBu4b5AixnaeDyP3PgKoPlQg',
-      high: '1GjJsq1jQz2lwoxFJkSB-JB0MC_n3_5GRFGOvlJcqwcY',
+      low: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT6Ys9Vw3rraPDmCeWave1xpovF1YBayV0FbRPBg-iuh2DBkjj84P7D31OthaHTG3uLWkXblccZ5qhA/pub?output=csv',
+      medium: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vREStPvytLV1CMGf0aeMzozI3mpVnU5tSPV8phELKq4VdKD7jMdsWmsR8n203rq-FMIPxdgUA-VCUSv/pub?output=csv',
+      high: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQLXta4ldz5NnndUF5p92SxcnOSvM5SO9Nk3_TQq2ZHEDkCSnARB1UUppJ3tiucJ0gjfW2tMGzhxbct/pub?output=csv',
       asia: 'xxx',
       europe: 'xxx',
       africa: 'xxx',

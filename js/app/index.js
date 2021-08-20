@@ -1,4 +1,4 @@
-(function($, _, Handlebars, Reveal, Papa, Tabletop, tkDataStore) {
+(function($, _, Handlebars, Reveal, Papa, tkDataStore) {
   'use strict';
 
   $(function() {
@@ -86,12 +86,14 @@
           window.location.href = window.location.origin + window.location.pathname + '#/slide-ready';
           _soundEffect('laser', 'stop');
         })
-        .fail(function() {
-          _shouldStartLoading(false);
-          window.location.href = window.location.origin + window.location.pathname + '#slide-index';
+        .fail(function () {
           console.warn('Fail loading question module <' + moduleName + '> , please try another one');
-          _buildModule(moduleName, 'local');
-          _soundEffect('laser', 'stop');
+          return _buildModule(moduleName, 'local')
+            .then(function () {
+              _shouldStartLoading(false);
+              window.location.href = window.location.origin + window.location.pathname + '#slide-ready';
+              _soundEffect('laser', 'stop');
+            });
         });
     }
 
@@ -150,20 +152,18 @@
         deferred.reject('loading timeout');
       }, 5000);
 
-      Tabletop.init({
-        key: tkDataStore.moduelSource.cloud[moduleName],
-        callback: function(data, tabletop) {
-          tkDataStore.questionModules[moduleName] = data;
+      Papa.parse(tkDataStore.moduelSource.cloud[moduleName], {
+        download: true,
+        header: true,
+        complete: function(data) {
+          tkDataStore.questionModules[moduleName] = data.data;
           clearTimeout(timer);
           deferred.resolve({
             name: moduleName,
             questions: tkDataStore.questionModules[moduleName]
           });
-        },
-        simpleSheet: true,
-        parseNumbers: true
+        }
       });
-
 
       return deferred.promise();
     }
@@ -235,4 +235,4 @@
 
     activate();
   });
-})(window.jQuery, window._, window.Handlebars, window.Reveal, window.Papa, window.Tabletop, window.tkDataStore);
+})(window.jQuery, window._, window.Handlebars, window.Reveal, window.Papa, window.tkDataStore);
